@@ -1,21 +1,14 @@
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
-const bodyParser = require('body-parser');
-const generatePage = require('./generate');
-
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.static(path.join(__dirname, '../pages')));
+// Serve static files from "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/generate-page', (req, res) => {
-  const data = req.body;
-  const slug = data.headline.toLowerCase().replace(/[^a-z0-9]/g, '-');
-  const pagePath = generatePage(data, slug);
-  res.json({ success: true, url: `/pages/${slug}.html` });
+// Route for home page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
