@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PagePilot Chat Builder</title>
+  <link rel="stylesheet" href="../public/assets/style.css" />
+  <script defer src="chat.js"></script>
+  <script defer src="uploader.js"></script>
+</head>
+<body>
+  <div id="chat-window">
+    <div id="chat-messages"></div>
+    <div id="chat-input">
+      <input type="text" id="userInput" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+      <input type="file" id="imageUpload" accept="image/*">
+      <button onclick="capturePhoto()">📷</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: pagepilot-app
+    env: node
+    buildCommand: npm install
+    startCommand: node server/app.js
